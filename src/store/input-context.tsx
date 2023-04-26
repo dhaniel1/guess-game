@@ -32,7 +32,7 @@ const secretNumberValue = secretNumberFunction();
 
 export const InputContextProvider = (props: any) => {
   const [secretNumber, setSecretNumber] = useState<number>(secretNumberValue);
-  const [showSecretNumber, setShowSecretNumberValue] = useState<boolean>(false);
+  const [showSecretNumber, setShowSecretNumber] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<number>(0);
   const [highScore, setHighScore] = useState<number>(0);
   const [score, setScore] = useState<number>(20);
@@ -40,12 +40,9 @@ export const InputContextProvider = (props: any) => {
     useState<string>("Start Guessing...");
 
   const valueChecker = (value: number) => {
-    console.log("value:: ", value);
-    console.log("secretNumber:: ", secretNumber);
-
     if (value === secretNumber) {
       setDisplayMessage("🎉 Correct Number!");
-      setShowSecretNumberValue(true);
+      setShowSecretNumber(true);
       if (score > highScore) setHighScore(score);
     } else if (value !== secretNumber) {
       if (score > 1) {
@@ -63,7 +60,7 @@ export const InputContextProvider = (props: any) => {
     setInputValue(0);
     setSecretNumber(secretNumberFunction());
     setScore(20);
-    setShowSecretNumberValue(false);
+    setShowSecretNumber(false);
   };
 
   const contextValue: todoContextObj = {

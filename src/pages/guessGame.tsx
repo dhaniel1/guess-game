@@ -16,8 +16,10 @@ const GuessGame: React.FC = (props) => {
   } = useContext(InputContext);
 
   useEffect(() => {
-    if (!!showSecretNumber) {
+    if (showSecretNumber) {
       document.body.style.backgroundColor = "#60b347";
+    } else {
+      document.body.style.backgroundColor = "#222";
     }
   }, [showSecretNumber]);
 
