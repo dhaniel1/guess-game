@@ -26,7 +26,7 @@ const GuessGame: React.FC = (props) => {
   return (
     <>
       <header>
-        <h1>Hey, Guess My Number!</h1>
+        <h1>Hey! Guess My Number!</h1>
         <p className="between">(Between 1 and 20)</p>
         <Button className="btn again" title={"Again"} onClick={reStarter} />
         <div
