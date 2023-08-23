@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { Button, Input } from "../components/shared";
-import { InputContext } from "../store/input-context";
+import { InputContext, todoContextObj } from "../store/input-context";
 
-const GuessGame: React.FC = (props) => {
+const GuessGame: React.FC = () => {
   const {
     reStarter,
     valueChecker,
@@ -13,7 +13,7 @@ const GuessGame: React.FC = (props) => {
     displayMessage,
     secretNumber,
     showSecretNumber,
-  } = useContext(InputContext);
+  } = useContext<todoContextObj>(InputContext);
 
   useEffect(() => {
     if (showSecretNumber) {
@@ -31,7 +31,8 @@ const GuessGame: React.FC = (props) => {
         <Button className="btn again" title={"Again"} onClick={reStarter} />
         <div
           className="number"
-          style={{ width: showSecretNumber ? "30rem" : "15rem" }}>
+          style={{ width: showSecretNumber ? "30rem" : "15rem" }}
+        >
           {!showSecretNumber ? "?" : secretNumber}
         </div>
       </header>
@@ -39,13 +40,13 @@ const GuessGame: React.FC = (props) => {
         <section className="left">
           <Input
             type="text"
-            className={`guess `}
-            value={inputValue || 0}
+            className="guess"
+            value={inputValue}
             onChange={(e) => setInputValue(+e.target.value)}
           />
           <Button
             className="btn check"
-            title={"check"}
+            title="check"
             onClick={() => valueChecker(inputValue)}
           />
         </section>

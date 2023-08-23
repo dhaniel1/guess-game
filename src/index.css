@@ -8,11 +8,11 @@
 }
  */
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap");
 
 * {
   margin: 0;
@@ -26,7 +26,7 @@ html {
 }
 
 body {
-  font-family: 'Press Start 2P', sans-serif;
+  font-family: "Press Start 2P", sans-serif;
   color: #eee;
   background-color: #222;
   /* background-color: #60b347; */
@@ -75,7 +75,7 @@ h1 {
   background: #eee;
   color: #333;
   font-size: 6rem;
-  width: 15rem;
+  /* width: 15rem; This is already considereed in the component inline style */
   padding: 3rem 0rem;
   text-align: center;
   position: absolute;

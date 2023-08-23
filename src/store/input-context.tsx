@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 
-interface todoContextObj {
+export interface todoContextObj {
   inputValue: number;
   highScore: number;
   score: number;
@@ -24,14 +24,14 @@ export const InputContext = createContext<todoContextObj>({
   setInputValue: () => {},
 });
 
-const secretNumberFunction = () => {
+const secretNumberGenerator = () => {
   return Math.trunc(Math.random() * 20) + 1;
 };
 
-const secretNumberValue = secretNumberFunction();
-
 export const InputContextProvider = (props: any) => {
-  const [secretNumber, setSecretNumber] = useState<number>(secretNumberValue);
+  const [secretNumber, setSecretNumber] = useState<number>(
+    secretNumberGenerator()
+  );
   const [showSecretNumber, setShowSecretNumber] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<number>(0);
   const [highScore, setHighScore] = useState<number>(0);
@@ -58,13 +58,13 @@ export const InputContextProvider = (props: any) => {
   const reStarter = () => {
     setDisplayMessage("Start Guessing...");
     setInputValue(0);
-    setSecretNumber(secretNumberFunction());
+    setSecretNumber(secretNumberGenerator());
     setScore(20);
     setShowSecretNumber(false);
   };
 
   const contextValue: todoContextObj = {
-    inputValue: inputValue,
+    inputValue,
     highScore,
     valueChecker,
     reStarter,
