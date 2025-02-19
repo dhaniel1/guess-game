@@ -1,18 +1,22 @@
 import React, { useContext, useEffect } from "react";
 import { Button, Input } from "../components/shared";
-import { InputContext, todoContextObj } from "../store/input-context";
+import {
+  InputContext,
+  REDUCER_ACTION_TYPE,
+  todoContextObj,
+} from "../store/input-context";
 
 const GuessGame: React.FC = () => {
   const {
-    reStarter,
-    valueChecker,
-    inputValue,
-    highScore,
-    score,
-    setInputValue,
-    displayMessage,
-    secretNumber,
-    showSecretNumber,
+    state: {
+      showSecretNumber,
+      secretNumber,
+      inputValue,
+      displayMessage,
+      highScore,
+      score,
+    },
+    dispatch,
   } = useContext<todoContextObj>(InputContext);
 
   useEffect(() => {
@@ -28,7 +32,13 @@ const GuessGame: React.FC = () => {
       <header>
         <h1>Hey! Guess My Number!</h1>
         <p className="between">(Between 1 and 20)</p>
-        <Button className="btn again" title={"Again"} onClick={reStarter} />
+        <Button
+          className="btn again"
+          title={"Again"}
+          onClick={() => {
+            dispatch({ type: REDUCER_ACTION_TYPE.RESTART });
+          }}
+        />
         <div
           className="number"
           style={{ width: showSecretNumber ? "30rem" : "15rem" }}
@@ -42,12 +52,23 @@ const GuessGame: React.FC = () => {
             type="text"
             className="guess"
             value={inputValue}
-            onChange={(e) => setInputValue(+e.target.value)}
+            onChange={(e) => {
+              console.log(e);
+
+              dispatch({
+                type: REDUCER_ACTION_TYPE.SETINPUT,
+                payload: +e.target.value,
+              });
+            }}
           />
           <Button
             className="btn check"
             title="check"
-            onClick={() => valueChecker(inputValue)}
+            onClick={() => {
+              dispatch({
+                type: REDUCER_ACTION_TYPE.CHECK,
+              });
+            }}
           />
         </section>
         <section className="right">
