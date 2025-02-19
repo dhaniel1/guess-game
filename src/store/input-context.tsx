@@ -45,8 +45,6 @@ type reducerAction = {
 function reducerFn(state: IReducerState, action: reducerAction): IReducerState {
   switch (action.type) {
     case REDUCER_ACTION_TYPE.CHECK:
-      console.log("CHECKINGGG");
-
       let { highScore, inputValue, score, secretNumber } = state;
       let tempState: IReducerState = state;
 
@@ -57,8 +55,6 @@ function reducerFn(state: IReducerState, action: reducerAction): IReducerState {
           displayMessage: "🎉 Correct Number!",
           highScore: score > highScore ? score : highScore,
         };
-
-        // return tempState;
       }
 
       if (inputValue !== secretNumber) {
@@ -80,8 +76,6 @@ function reducerFn(state: IReducerState, action: reducerAction): IReducerState {
       return tempState;
 
     case REDUCER_ACTION_TYPE.SETINPUT:
-      console.log("Payload: ", action.payload);
-
       return { ...state, inputValue: action.payload! };
 
     case REDUCER_ACTION_TYPE.RESTART:
@@ -98,7 +92,6 @@ function reducerFn(state: IReducerState, action: reducerAction): IReducerState {
 
 export const InputContextProvider = (props: any) => {
   const [state, dispatch] = useReducer(reducerFn, initReducerState);
-  console.log(state);
 
   const contextValue: todoContextObj = {
     state,
