@@ -53,8 +53,6 @@ const GuessGame: React.FC = () => {
             className="guess"
             value={inputValue}
             onChange={(e) => {
-              console.log(e);
-
               dispatch({
                 type: REDUCER_ACTION_TYPE.SETINPUT,
                 payload: +e.target.value,
