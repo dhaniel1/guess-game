@@ -76,7 +76,7 @@ function reducerFn(state: IReducerState, action: reducerAction): IReducerState {
       return tempState;
 
     case REDUCER_ACTION_TYPE.SETINPUT:
-      return { ...state, inputValue: action.payload! };
+      return { ...state, inputValue: action.payload ?? state.inputValue };
 
     case REDUCER_ACTION_TYPE.RESTART:
       return {

@@ -1,10 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Button, Input } from "../components/shared";
-import {
-  InputContext,
-  REDUCER_ACTION_TYPE,
-  todoContextObj,
-} from "../store/input-context";
+import { REDUCER_ACTION_TYPE } from "../store/input-context";
+import { useInputContext } from "../hooks";
 
 const GuessGame: React.FC = () => {
   const {
@@ -17,7 +14,7 @@ const GuessGame: React.FC = () => {
       score,
     },
     dispatch,
-  } = useContext<todoContextObj>(InputContext);
+  } = useInputContext();
 
   useEffect(() => {
     if (showSecretNumber) {
